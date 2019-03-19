@@ -27,6 +27,7 @@ public class RNAppInfoModule extends ReactContextBaseJavaModule {
    */
   public void getAppName(final Callback callback) {
     //
+
   }
 
   @ReactMethod
