@@ -25,21 +25,31 @@ public class RNAppInfoModule extends ReactContextBaseJavaModule {
    * 获取app名称
    * @param callback 回调
    */
-  public void getAppVersion(final Callback successCallback) {
-    JSONObject versionInfo = new JSONObject();
-    JSONObject callback = new JSONObject();
-    try {
-      versionInfo.put("versionCode", getVersionCode(reactContext));
-      versionInfo.put("versionName", getVersionName(reactContext));
-      successCallback.invoke(versionInfo.toString());
-    } catch (JSONException e) {
-      e.printStackTrace();
-    }
+  public void getAppName(final Callback callback) {
+    //
   }
 
+  @ReactMethod
+  /**
+   * 获取app 版本号 versionName
+   * @param callback 回调
+   */
+  public void getAppVersion(final Callback callback) {
+    callback.invoke(getVersionName(reactContext));
+  }
+
+  @ReactMethod
+  /**
+   * 获取app版本号 versionCode
+   * @param callback 回调
+   */
+  public void getAppVersionCode(final Callback callback) {
+    callback.invoke(getVersionCode(reactContext));
+  }
+
+  //ACTIONS
   /**
    * 获取appVersionCode
-   * @param callback 回调
    */
   public static int getVersionCode(Context mContext) {
     if (mContext != null) {
@@ -53,7 +63,6 @@ public class RNAppInfoModule extends ReactContextBaseJavaModule {
 
   /**
    * 获取app版本号
-   * @param callback 回调
    */
   public static String getVersionName(Context mContext) {
     if (mContext != null) {
